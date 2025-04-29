@@ -4,180 +4,226 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Blue Mushroom Supplies</title>
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Quicksand&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(180deg, #01394f, #02678f, #52b6d6);
-      color: white;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom, #002b36, #005f73);
+      color: #fff;
       text-align: center;
-      overflow-x: hidden;
     }
-
-    .sarape-stripe {
-      height: 12px;
+    header {
       background: repeating-linear-gradient(
-        to right,
-        #005f8c 0px,
-        #005f8c 20px,
-        #02678f 20px,
-        #02678f 40px,
-        #b2e3f3 40px,
-        #b2e3f3 60px
+        45deg,
+        #005f73,
+        #005f73 10px,
+        #0a9396 10px,
+        #0a9396 20px
       );
-    }
-
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: rgba(0,0,0,0.65);
-      padding: 1rem 2rem;
+      padding: 1rem;
       font-family: 'UnifrakturCook', cursive;
-      font-size: 1.8rem;
-      border-bottom: 2px solid #ffffff55;
+      font-size: 2rem;
     }
-
-    .dropdown {
+    nav {
       position: relative;
-      display: inline-block;
     }
-
-    .dropdown-btn {
-      background-color: #014d6d;
-      color: white;
-      border: 2px solid white;
-      padding: 0.4rem 1rem;
+    .dropdown {
+      background: #003f4f;
+      padding: 0.5rem;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: 1rem;
-      font-family: monospace;
-      border-radius: 8px;
-      transition: background 0.3s;
+      display: inline-block;
+      margin: 1rem;
     }
-
-    .dropdown-btn:hover {
-      background-color: #0276a8;
-    }
-
     .dropdown-content {
       display: none;
       position: absolute;
-      background-color: #014d6d;
-      min-width: 160px;
-      box-shadow: 0px 8px 12px rgba(0,0,0,0.4);
+      background-color: #006d77;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
       z-index: 1;
-      right: 0;
-      border-radius: 0 0 10px 10px;
-      animation: fadeIn 0.3s ease-in-out;
+      width: 100px;
+      left: 50%;
+      transform: translateX(-50%);
     }
-
     .dropdown-content a {
       color: white;
-      padding: 12px 16px;
-      text-decoration: none;
+      padding: 10px;
       display: block;
-      font-family: monospace;
+      text-decoration: none;
     }
-
-    .dropdown-content a:hover {
-      background-color: #0276a8;
-    }
-
     .dropdown:hover .dropdown-content {
       display: block;
     }
-
-    .hero {
-      padding: 4rem 1rem;
+    .spores {
+      animation: float 4s infinite ease-in-out;
+      font-size: 2rem;
     }
-
-    .hero h2 {
-      font-family: 'UnifrakturCook', cursive;
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
     }
-
-    .hero p {
-      font-style: italic;
-      font-size: 1.3rem;
-      margin: 0.5rem 0;
-    }
-
-    .hero img {
-      max-width: 80%;
-      margin: 2rem auto;
-      border: 3px solid white;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #ffffff44;
-    }
-
-    footer {
-      background-color: rgba(0, 0, 0, 0.4);
+    .shop-item {
+      margin: 1rem auto;
+      background: #004b5b;
       padding: 1rem;
-      font-size: 0.875rem;
-      margin-top: 3rem;
+      max-width: 400px;
+      border-radius: 10px;
     }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-5px);}
-      to {opacity: 1; transform: translateY(0);}
+    .shop-item button {
+      margin-top: 0.5rem;
+      background: #0a9396;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form input, form textarea {
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      width: 90%;
+      border-radius: 5px;
+      border: none;
+    }
+    form button {
+      background: #0a9396;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+    }
+    footer {
+      margin-top: 3rem;
+      padding: 1rem;
+      background: #003d4d;
+      font-size: 0.9rem;
+    }
+    #cart {
+      margin: 2rem auto;
+      max-width: 500px;
+      background: #002e3a;
+      padding: 1rem;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <div class="sarape-stripe"></div>
-  <div class="navbar">
-    <div>Blue Mushroom</div>
-    <div class="dropdown">
-      <button class="dropdown-btn">Menu</button>
-      <div class="dropdown-content">
-        <a href="#">Shop</a>
-        <a href="#">About</a>
-        <a href="contact.html">Contact</a>
-      </div>
-    </div>
-  </div>
-  <div class="sarape-stripe"></div>
 
-  <div class="hero">
-    <h2>The Blue Mushroom Supplies</h2>
-    <p>"Low and Slow, the Mycelium Way"</p>
-    <img src="your-mascot-image.png" alt="Mini Smokey on a lowrider bike" />
-    <p><em>Peace, Love, and Hippie Shit</em></p>
+<header>Blue Mushroom</header>
+
+<nav>
+  <div class="dropdown">
+    Menu
+    <div class="dropdown-content">
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
   </div>
-<!-- Shop Section -->
-<section id="shop" class="py-12 bg-gradient-to-b from-[#004c66] to-[#006699] text-white text-center">
-  <h2 class="text-3xl font-bold mb-6">Shop</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-    <!-- Product 1 -->
-    <div class="bg-white text-black p-4 rounded-2xl shadow-lg">
-      <img src="https://via.placeholder.com/200x150" alt="Grow Kit" class="w-full h-auto rounded-md mb-2">
-      <h3 class="text-xl font-semibold">Mini Grow Kit</h3>
-      <p class="text-sm mb-2">Perfect for beginners. Comes with everything you need.</p>
-      <span class="block font-bold text-blue-700 mb-2">$35.00</span>
-      <button class="bg-blue-800 text-white py-1 px-4 rounded hover:bg-blue-900">Add to Cart</button>
-    </div>
-    <!-- Product 2 -->
-    <div class="bg-white text-black p-4 rounded-2xl shadow-lg">
-      <img src="https://via.placeholder.com/200x150" alt="Spore Print Pack" class="w-full h-auto rounded-md mb-2">
-      <h3 class="text-xl font-semibold">Spore Print Pack</h3>
-      <p class="text-sm mb-2">Includes 3 hand-selected prints, lab-grade quality.</p>
-      <span class="block font-bold text-blue-700 mb-2">$25.00</span>
-      <button class="bg-blue-800 text-white py-1 px-4 rounded hover:bg-blue-900">Add to Cart</button>
-    </div>
-    <!-- Product 3 -->
-    <div class="bg-white text-black p-4 rounded-2xl shadow-lg">
-      <img src="https://via.placeholder.com/200x150" alt="Frime Tee" class="w-full h-auto rounded-md mb-2">
-      <h3 class="text-xl font-semibold">Frime Tee</h3>
-      <p class="text-sm mb-2">“Low and Slow” shirt in heavyweight cotton. Sizes S-XXL.</p>
-      <span class="block font-bold text-blue-700 mb-2">$28.00</span>
-      <button class="bg-blue-800 text-white py-1 px-4 rounded hover:bg-blue-900">Add to Cart</button>
-    </div>
+</nav>
+
+<section>
+  <h1>The Blue Mushroom Supplies</h1>
+  <p><em>"Low and Slow, the Mycelium Way"</em></p>
+
+  <div class="spores">** Mini Smokey on a lowrider bike **</div>
+
+  <p><strong>Peace, Love, and Hippie Shit</strong></p>
+</section>
+
+<section id="shop">
+  <h2>Shop</h2>
+
+  <div class="shop-item">
+    Syringe of live culture - $10
+    <button onclick="addToCart('Syringe', 10)">Add to Cart</button>
+  </div>
+  <div class="shop-item">
+    Substrate Kit - $15
+    <button onclick="addToCart('Substrate Kit', 15)">Add to Cart</button>
+  </div>
+  <div class="shop-item">
+    Grain bag - $20
+    <button onclick="addToCart('Grain bag', 20)">Add to Cart</button>
+  </div>
+  <div class="shop-item">
+    Inoculated Grain bag - $25
+    <button onclick="addToCart('Inoculated Grain bag', 25)">Add to Cart</button>
+  </div>
+  <div class="shop-item">
+    All-in-one - $30
+    <button onclick="addToCart('All-in-one', 30)">Add to Cart</button>
+  </div>
+  <div class="shop-item">
+    Inoculated All-in-one - $35
+    <button onclick="addToCart('Inoculated All-in-one', 35)">Add to Cart</button>
+  </div>
+  <div class="shop-item">
+    Premade lids - $2 or 3 for $5
+    <button onclick="addToCart('Premade lids', 5)">Add to Cart</button>
+  </div>
+  <div class="shop-item">
+    Clean Agar cup - $1
+    <button onclick="addToCart('Clean Agar cup', 1)">Add to Cart</button>
+  </div>
+  <div class="shop-item">
+    Clean Agar plate - $2
+    <button onclick="addToCart('Clean Agar plate', 2)">Add to Cart</button>
+  </div>
+  <div class="shop-item">
+    Inoculated Cup/Plate - $15
+    <button onclick="addToCart('Inoculated Cup/Plate', 15)">Add to Cart</button>
+  </div>
+
+  <div id="cart">
+    <h3>Cart</h3>
+    <div id="cart-items"></div>
+    <p><strong>Total: $<span id="total">0</span></strong></p>
   </div>
 </section>
-  <footer>
-    © 2025 The Blue Mushroom Supplies. All rights reserved.
-  </footer>
+
+<section id="about">
+  <h2>About</h2>
+  <p>Homegrown supplies for the low and slow cultivator. Firme gear, rooted in community and mycelium love.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <form action="https://formspree.io/f/xzzrdaev" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required><br>
+    <input type="email" name="_replyto" placeholder="Your Email" required><br>
+    <textarea name="message" placeholder="Your message here..." rows="4" required></textarea><br>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<footer>
+  © 2025 The Blue Mushroom Supplies. All rights reserved.
+</footer>
+
+<script>
+  let total = 0;
+  const cartItems = [];
+
+  function addToCart(item, price) {
+    cartItems.push({ item, price });
+    total += price;
+    updateCart();
+  }
+
+  function updateCart() {
+    const cartDiv = document.getElementById('cart-items');
+    cartDiv.innerHTML = '';
+    cartItems.forEach(entry => {
+      const div = document.createElement('div');
+      div.textContent = `${entry.item} - $${entry.price}`;
+      cartDiv.appendChild(div);
+    });
+    document.getElementById('total').textContent = total;
+  }
+</script>
+
 </body>
 </html>
