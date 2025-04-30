@@ -3,125 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Blue Mushroom Supplies - Low and Slow, the Mycelium Way" />
+  <meta name="keywords" content="mushroom supplies, psychedelic gear, lowrider, cholo style" />
+  <meta name="author" content="Mini Smokey" />
   <title>The Blue Mushroom Supplies</title>
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #e0f7fa, #e1f5fe);
-      color: #333;
-      text-align: center;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(180deg, #003366, #336699);
+      color: #fff;
     }
     header {
-      background-color: #2196f3;
-      color: white;
-      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    h1 {
-      margin: 0;
-      font-size: 2rem;
+    header h1 {
+      font-family: 'Impact', sans-serif;
+      font-size: 1.5rem;
+      color: #00ccff;
     }
     nav a {
-      margin: 0 1rem;
       color: white;
       text-decoration: none;
+      margin-left: 15px;
       font-weight: bold;
     }
+    nav a:hover {
+      text-decoration: underline;
+      color: #66ccff;
+    }
+    .container {
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .mascot {
+      text-align: center;
+    }
+    .mascot img {
+      max-width: 300px;
+      width: 100%;
+    }
+    .catchphrases {
+      font-style: italic;
+      text-align: center;
+      margin: 20px 0;
+    }
     section {
-      padding: 2rem;
-    }
-    .product {
-      border: 1px solid #ccc;
-      margin: 1rem auto;
-      padding: 1rem;
-      border-radius: 8px;
-      width: 90%;
-      max-width: 400px;
-      background-color: white;
-    }
-    .product button {
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background-color: #2196f3;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .cart-section {
-      background-color: #f5f5f5;
-      padding: 2rem;
-      margin-top: 2rem;
+      margin-bottom: 40px;
     }
     footer {
-      background-color: #2196f3;
-      color: white;
-      padding: 1rem;
-      margin-top: 2rem;
+      background-color: #001f33;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
     }
-    input.promo {
-      margin-top: 1rem;
-      padding: 0.5rem;
-      width: 80%;
-      max-width: 300px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
+    button {
+      padding: 8px 12px;
+      background: #4cb8c4;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #3a9ba7;
     }
   </style>
-  <script>
-    let cart = [];
-    function addToCart(item) {
-      cart.push(item);
-      alert(item + " added to cart!");
-    }
-    function applyPromo() {
-      const code = document.getElementById('promoCode').value;
-      alert("Promo code '" + code + "' applied (if valid)!");
-    }
-  </script>
 </head>
 <body>
   <header>
-    <h1>The Blue Mushroom Supplies</h1>
+    <h1>The Blue Mushroom</h1>
     <nav>
       <a href="#about">About</a>
       <a href="#shop">Shop</a>
       <a href="#contact">Contact</a>
+      <a href="https://www.tiktok.com/@smokeyjae13" target="_blank">TikTok</a>
     </nav>
   </header>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>We’re a small-town, family-owned and operated biz — local roots, clean vibes.</p>
-    <p>Everything we offer is lab-tested and crafted with care, straight from our heart to your hands.</p>
-    <p>Mushrooms didn’t just change my life — they helped me overcome alcohol addiction and get on the path to recovery. If you're struggling, just know: <strong style="color: #2196f3;">we do recover</strong>. And if you're ever in need — we got you.</p>
-    <p>Have questions or a problem with your order? Hit us up. We’ll always make it right. It’s more than business — it’s family.</p>
-    <p><strong><em style="color: #3f51b5;">Peace, Love, and Hippie Shit.</em></strong></p>
-  </section>
+  <div class="container">
+    <div class="mascot">
+      <img src="images/mini-smokey.png" alt="Mini Smokey posing firme on his lowrider" />
+    </div>
 
-  <section id="shop">
-    <h2>Shop</h2>
-    <div class="product"><h3>Syringe of live culture - $10</h3><button onclick="addToCart('Syringe of live culture')">Add to Cart</button></div>
-    <div class="product"><h3>Substrate Kit - $15</h3><p>(Coco coir, Vermiculite, and Gypsum)</p><button onclick="addToCart('Substrate Kit')">Add to Cart</button></div>
-    <div class="product"><h3>Grain bag - $20</h3><button onclick="addToCart('Grain bag')">Add to Cart</button></div>
-    <div class="product"><h3>Inoculated Grain bag - $25</h3><button onclick="addToCart('Inoculated Grain bag')">Add to Cart</button></div>
-    <div class="product"><h3>All-in-one - $30</h3><button onclick="addToCart('All-in-one')">Add to Cart</button></div>
-    <div class="product"><h3>Inoculated All-in-one - $35</h3><button onclick="addToCart('Inoculated All-in-one')">Add to Cart</button></div>
-    <div class="product"><h3>Premade lids - $2 or 3 for $5</h3><button onclick="addToCart('Premade lids')">Add to Cart</button></div>
-    <div class="product"><h3>Clean Agar cup - $1</h3><button onclick="addToCart('Clean Agar cup')">Add to Cart</button></div>
-    <div class="product"><h3>Clean Agar plate - $2</h3><button onclick="addToCart('Clean Agar plate')">Add to Cart</button></div>
-    <div class="product"><h3>Inoculated Cup/Plate - $15</h3><button onclick="addToCart('Inoculated Cup/Plate')">Add to Cart</button></div>
-  </section>
+    <div class="catchphrases">
+      <p>“Low and Slow, the Mycelium Way”</p>
+      <p>“Peace, Love, and Hippie Shit”</p>
+    </div>
 
-  <section class="cart-section">
-    <h2>Have a Promo Code?</h2>
-    <input type="text" id="promoCode" class="promo" placeholder="Enter code here..." />
-    <br />
-    <button onclick="applyPromo()">Apply</button>
-  </section>
+    <section id="about">
+      <h2>About Us</h2>
+      <p>Welcome to The Blue Mushroom Supplies, where firme culture meets fungi hustle. We started with a vision to bring the highest quality mycology supplies to the community — run by growers, for growers. From culture syringes to inoculated grain and all-in-one bags, we deliver quality and vibes. Ride low, grow slow.</p>
+    </section>
+
+    <section id="shop">
+      <h2>Shop</h2>
+      <div id="items"></div>
+      <h3>Shopping Cart</h3>
+      <div id="cart"></div>
+      <p><strong>Total:</strong> $<span id="total">0</span></p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form action="https://formspree.io/f/xzzrdaev" method="POST">
+        <label>
+          Name:<br />
+          <input type="text" name="name" required>
+        </label><br><br>
+        <label>
+          Email:<br />
+          <input type="email" name="_replyto" required>
+        </label><br><br>
+        <label>
+          Message:<br />
+          <textarea name="message" rows="4" required></textarea>
+        </label><br><br>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </div>
 
   <footer>
-    <p>&copy; 2025 The Blue Mushroom Supplies</p>
+    &copy; 2025 The Blue Mushroom Supplies. Ride slow, grow strong.
   </footer>
+
+  <script>
+    const products = [
+      { name: 'Syringe of live culture', price: 10 },
+      { name: 'Substrate Kit', price: 15 },
+      { name: 'Grain bag', price: 20 },
+      { name: 'Inoculated Grain bag', price: 25 },
+      { name: 'All-in one', price: 30 },
+      { name: 'Inoculated All-in one', price: 35 },
+      { name: 'Premade lids', price: 2 },
+      { name: 'Clean Agar cup', price: 1 },
+      { name: 'Clean Agar plate', price: 2 },
+      { name: 'Inoculated Cup/Plate', price: 15 }
+    ];
+
+    const cart = [];
+    const itemsDiv = document.getElementById('items');
+    const cartDiv = document.getElementById('cart');
+    const totalSpan = document.getElementById('total');
+
+    products.forEach((product, index) => {
+      const item = document.createElement('div');
+      item.className = 'item';
+      item.style.marginBottom = '10px';
+      item.innerHTML = `
+        <span>${product.name} - $${product.price}</span>
+        <button onclick="addToCart(${index})">Add</button>
+      `;
+      itemsDiv.appendChild(item);
+    });
+
+    function addToCart(index) {
+      const product = products[index];
+      const existing = cart.find(item => item.name === product.name);
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      updateCart();
+    }
+
+    function removeFromCart(index) {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+      } else {
+        cart.splice(index, 1);
+      }
+      updateCart();
+    }
+
+    function updateCart() {
+      cartDiv.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.style.marginBottom = '8px';
+        cartItem.innerHTML = `
+          <span>${item.name} x${item.quantity} - $${item.price * item.quantity}</span>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartDiv.appendChild(cartItem);
+      });
+      totalSpan.textContent = total;
+    }
+  </script>
 </body>
 </html>
