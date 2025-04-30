@@ -1,0 +1,28 @@
+The Blue Mushroom Supplies body { margin: 0; font-family: 'Arial', sans-serif; background: linear-gradient(to bottom, #4a90e2, #2c3e50); color: white; } header { background: repeating-linear-gradient(45deg, #0a3d62, #0a3d62 10px, #1e90ff 10px, #1e90ff 20px); text-align: center; padding: 2rem; } nav a { margin: 0 1rem; color: white; text-decoration: none; font-weight: bold; } section { padding: 2rem; } .product { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid white; padding-bottom: 1rem; } .cart { margin-top: 2rem; } .promo { margin-top: 1rem; } .tiktok { text-align: center; margin-top: 2rem; } form input, form button { padding: 0.5rem; margin: 0.5rem 0; } button { background-color: #1e90ff; color: white; border: none; cursor: pointer; } footer { background: #0a3d62; text-align: center; padding: 1rem; margin-top: 3rem; } The Blue Mushroom Supplies 
+
+Low and Slow, the Mycelium Way | Peace, Love, and Hippie Shit
+
+Shop About Us Contact Shop 
+
+Grow Kit - $40 Add to Cart 
+
+Spore Syringe - $20 Add to Cart 
+
+Cart 
+
+Apply 
+
+Total: $0
+
+About Us 
+
+Welcome to The Blue Mushroom Supplies — where firme culture meets fungi. We're a proudly independent vendor run by passionate growers and true heads. From high-quality spore syringes to fully loaded grow kits, we keep it low and slow, the mycelium way. Based in the barrio and grown with love. Tap in. 
+
+Contact Us 
+
+
+Send 
+
+Follow us on TikTok - @smokeyjae13 
+
+© 2025 The Blue Mushroom Supplies. All rights firme. let cart = []; let total = 0; let usedEmails = []; function addToCart(price, name) { cart.push({ name, price }); total += price; updateCart(); } function updateCart() { const cartList = document.getElementById('cart-items'); cartList.innerHTML = ''; cart.forEach(item => { const li = document.createElement('li'); li.textContent = `${item.name} - $${item.price}`; cartList.appendChild(li); }); document.getElementById('total').textContent = total.toFixed(2); } function applyPromo() { const code = document.getElementById('promo').value.trim().toUpperCase(); const msg = document.getElementById('promo-msg'); if (code === 'SMOKEY10') { total *= 0.9; msg.textContent = 'Promo applied: 10% off'; } else if (code === 'HIPPESHIT') { const email = prompt("Enter your email to claim this one-time offer:"); if (!usedEmails.includes(email)) { usedEmails.push(email); total *= 0.8; msg.textContent = 'Promo applied: 20% off for first-time customers'; } else { msg.textContent = 'This code was already used with this email.'; } } else { msg.textContent = 'Invalid promo code.'; } updateCart(); } 
