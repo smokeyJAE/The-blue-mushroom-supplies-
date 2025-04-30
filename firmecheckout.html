@@ -1,0 +1,11 @@
+The Blue Mushroom Checkout body { font-family: 'Arial', sans-serif; background: linear-gradient(135deg, #3b82f6, #1e40af); color: #fff; padding: 2rem; } .container { max-width: 600px; margin: auto; background: #111827; padding: 2rem; border-radius: 1rem; box-shadow: 0 0 15px rgba(0,0,0,0.4); } h1 { text-align: center; margin-bottom: 1rem; } .item { display: flex; justify-content: space-between; margin-bottom: 1rem; } input, button { padding: 0.5rem; width: 100%; margin: 0.5rem 0; border: none; border-radius: 0.5rem; } .btn { background-color: #10b981; color: #fff; font-weight: bold; cursor: pointer; } .btn:hover { background-color: #059669; } .total, .discount { text-align: right; font-size: 1.1rem; } .note { font-size: 0.9rem; color: #93c5fd; } 
+
+Checkout 
+
+Blue Mushroom Grow Kit $50 
+
+Deluxe Fruiting Chamber $80 
+
+<div class="item total"> <strong>Subtotal:</strong> <span id="subtotal">$130</span> </div> <input type="email" id="email" placeholder="Enter your email" required /> <input type="text" id="promo" placeholder="Promo Code (SMOKEY10 or HIPPESHIT)" /> <button class="btn" onclick="applyDiscount()">Apply Discount</button> <div class="discount" id="discountDisplay"></div> <button class="btn" onclick="placeOrder()">Place Order</button> <div class="note">* First-time customers can use HIPPESHIT for 20% off (one-time).</div> 
+
+let subtotal = 130; let discountApplied = false; let hippieUsedEmails = []; function applyDiscount() { const promo = document.getElementById('promo').value.trim().toUpperCase(); const email = document.getElementById('email').value.trim(); let discount = 0; if (promo === 'SMOKEY10') { discount = 0.10; } else if (promo === 'HIPPESHIT') { if (hippieUsedEmails.includes(email)) { alert('Sorry, HIPPESHIT can only be used once per email.'); return; } else { discount = 0.20; hippieUsedEmails.push(email); } } const discountedTotal = subtotal * (1 - discount); document.getElementById('discountDisplay').innerText = `Discounted Total: $${discountedTotal.toFixed(2)}`; discountApplied = true; } function placeOrder() { const email = document.getElementById('email').value.trim(); if (!email) { alert('Please enter your email.'); return; } alert(`Gracias! Order placed for ${email}.`); // Add future integration with payment system here }  
