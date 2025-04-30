@@ -1,4 +1,4 @@
-I<!DOCTYPE html>
+8pxI<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -191,7 +191,27 @@ I<!DOCTYPE html>
     Inoculated Cup/Plate - $15
     <button onclick="addToCart('Inoculated Cup/Plate', 15)">Add to Cart</button>
   </div>
+<!-- Floating Cart Icon -->
+<div id="cart-icon" onclick="toggleCart()">
+  🛒
+  <span id="cart-count">0</span>
+</div>
 
+<!-- Slide-Out Cart Panel -->
+<div id="cart-panel">
+  <h2>Your Cart</h2>
+  <div id="cart-items"></div>
+  
+  <div class="promo-code">
+    <label for="promo">Promo Code:</label>
+    <input type="text" id="promo" placeholder="Enter code">
+  </div>
+
+  <div class="cart-actions">
+    <button onclick="applyPromo()">Apply</button>
+    <button onclick="checkout()">Checkout</button>
+  </div>
+</div>
   <div id="cart">
     <h3>Cart</h3>
     <div id="cart-items"></div>
