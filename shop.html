@@ -1,7 +1,138 @@
-Blue Mushroom Supplies Shop body { background: #0d1b2a; color: #fefefe; font-family: 'Arial', sans-serif; padding: 20px; } h1 { text-align: center; color: #4cb8c4; } .shop, .cart, .out-of-stock { margin-top: 30px; } .item, .cart-item { background: #1b263b; margin-bottom: 10px; padding: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; } button { padding: 5px 10px; background: #4cb8c4; color: #000; border: none; border-radius: 5px; cursor: pointer; } button:hover { background: #3a9ba7; } Blue Mushroom Supplies Shop 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blue Mushroom Supplies Shop</title>
+  <style>
+    body {
+      background: #0d1b2a;
+      color: #fefefe;
+      font-family: 'Arial', sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #4cb8c4;
+    }
+    .shop, .cart, .out-of-stock {
+      margin-top: 30px;
+    }
+    .item, .cart-item {
+      background: #1b263b;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button {
+      padding: 5px 10px;
+      background: #4cb8c4;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #3a9ba7;
+    }
+  </style>
+</head>
+<body>
+  <h1>Blue Mushroom Supplies</h1>
 
-Shopping Cart 
+  <section class="shop">
+    <h2>Shop</h2>
+    <div id="items"></div>
+  </section>
 
-Total: $0
+  <section class="cart">
+    <h2>Shopping Cart</h2>
+    <div id="cart"></div>
+    <p><strong>Total:</strong> $<span id="total">0</span></p>
+  </section>
 
-Out of Stock const products = [ { name: 'Syringe of live culture', price: 10 }, { name: 'Substrate Kit', price: 15 }, { name: 'Grain bag', price: 20 }, { name: 'Inoculated Grain bag', price: 25 }, { name: 'All-in one', price: 30 }, { name: 'Inoculated All-in one', price: 35 }, { name: 'Premade lids', price: 2 }, { name: 'Clean Agar cup', price: 1 }, { name: 'Clean Agar plate', price: 2 }, { name: 'Inoculated Cup/Plate', price: 15 } ]; const outOfStock = ['Premade lids', 'Inoculated Cup/Plate']; const cart = []; const itemsDiv = document.getElementById('items'); const cartDiv = document.getElementById('cart'); const totalSpan = document.getElementById('total'); const outOfStockUl = document.getElementById('outOfStock'); products.forEach((product, index) => { if (outOfStock.includes(product.name)) { const li = document.createElement('li'); li.textContent = product.name; outOfStockUl.appendChild(li); return; } const item = document.createElement('div'); item.className = 'item'; item.innerHTML = ` ${product.name} - $${product.price} Add `; itemsDiv.appendChild(item); }); function addToCart(index) { const product = products[index]; const existing = cart.find(item => item.name === product.name); if (existing) { existing.quantity++; } else { cart.push({ ...product, quantity: 1 }); } updateCart(); } function removeFromCart(index) { if (cart[index].quantity > 1) { cart[index].quantity--; } else { cart.splice(index, 1); } updateCart(); } function updateCart() { cartDiv.innerHTML = ''; let total = 0; cart.forEach((item, index) => { total += item.price * item.quantity; const cartItem = document.createElement('div'); cartItem.className = 'cart-item'; cartItem.innerHTML = ` ${item.name} x${item.quantity} - $${item.price * item.quantity} Remove `; cartDiv.appendChild(cartItem); }); totalSpan.textContent = total; } 
+  <section class="out-of-stock">
+    <h2>Out of Stock</h2>
+    <ul id="outOfStock"></ul>
+  </section>
+
+  <script>
+    const products = [
+      { name: 'Syringe of live culture', price: 10 },
+      { name: 'Substrate Kit', price: 15 },
+      { name: 'Grain bag', price: 20 },
+      { name: 'Inoculated Grain bag', price: 25 },
+      { name: 'All-in one', price: 30 },
+      { name: 'Inoculated All-in one', price: 35 },
+      { name: 'Premade lids', price: 2 },
+      { name: 'Clean Agar cup', price: 1 },
+      { name: 'Clean Agar plate', price: 2 },
+      { name: 'Inoculated Cup/Plate', price: 15 }
+    ];
+
+    const outOfStock = ['Premade lids', 'Inoculated Cup/Plate'];
+    const cart = [];
+
+    const itemsDiv = document.getElementById('items');
+    const cartDiv = document.getElementById('cart');
+    const totalSpan = document.getElementById('total');
+    const outOfStockUl = document.getElementById('outOfStock');
+
+    products.forEach((product, index) => {
+      if (outOfStock.includes(product.name)) {
+        const li = document.createElement('li');
+        li.textContent = product.name;
+        outOfStockUl.appendChild(li);
+        return;
+      }
+      const item = document.createElement('div');
+      item.className = 'item';
+      item.innerHTML = `
+        <span>${product.name} - $${product.price}</span>
+        <button onclick="addToCart(${index})">Add</button>
+      `;
+      itemsDiv.appendChild(item);
+    });
+
+    function addToCart(index) {
+      const product = products[index];
+      const existing = cart.find(item => item.name === product.name);
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      updateCart();
+    }
+
+    function removeFromCart(index) {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+      } else {
+        cart.splice(index, 1);
+      }
+      updateCart();
+    }
+
+    function updateCart() {
+      cartDiv.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        const cartItem = document.createElement('div');
+        cartItem.className = 'cart-item';
+        cartItem.innerHTML = `
+          <span>${item.name} x${item.quantity} - $${item.price * item.quantity}</span>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartDiv.appendChild(cartItem);
+      });
+      totalSpan.textContent = total;
+    }
+  </script>
+</body>
+</html>
+
