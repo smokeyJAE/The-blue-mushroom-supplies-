@@ -1,284 +1,213 @@
-8pxI<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Blue Mushroom Supplies</title>
-  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Quicksand&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
   <style>
+    /* Clean, firme Impala-inspired vibe */
     body {
       margin: 0;
-      font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(to bottom, #002b36, #005f73);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #1e3c72, #2a5298);
       color: #fff;
-      text-align: center;
-    }<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+      overflow-x: hidden;
+    }header {
+  background: #0e1a34;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}
 
-<section id="contact" style="padding: 2rem; background: linear-gradient(to right, #1e3a8a, #3b82f6); color: #fff; font-family: 'Trebuchet MS', sans-serif;">
-  <h2 style="font-size: 2.2rem; margin-bottom: 1rem; border-bottom: 2px solid #facc15; display: inline-block;">Contact Me</h2>
-  <p style="font-size: 1rem; margin-bottom: 1.5rem;">Thank you for your time. Feel free to reach out anytime:</p>
-  <ul style="list-style: none; padding-left: 0; font-size: 1rem; line-height: 2;">
-    <li><i class="fas fa-phone-alt" style="margin-right: 8px; color: #facc15;"></i><a href="tel:7199802629" style="color: #facc15; text-decoration: none;">719-980-2629</a></li>
-    <li><i class="fas fa-envelope" style="margin-right: 8px; color: #facc15;"></i><a href="mailto:Smokey@thebluemushroomsupply.com" style="color: #facc15; text-decoration: none;">Smokey@thebluemushroomsupply.com</a></li>
-    <li><i class="fab fa-tiktok" style="margin-right: 8px; color: #facc15;"></i><a href="https://www.tiktok.com/@smokeyjae13" target="_blank" style="color: #facc15; text-decoration: none;">@smokeyjae13</a></li>
-  </ul>
-  <p class="catchphrase" style="margin-top: 2rem; font-size: 1.1rem; font-style: italic; font-weight: bold; color: #facc15;">Peace, Love, and Hippie Shit.</p>
-</section>
-    header {
-      background: repeating-linear-gradient(
-        45deg,
-        #005f73,
-        #005f73 10px,
-        #0a9396 10px,
-        #0a9396 20px
-      <a href="https://www.tiktok.com/@smokeyjae13?_t=ZT-8vyDq9ptPSd&_r=1" target="_blank" style="display:inline-flex; align-items:center; gap:0.5rem; text-decoration:none; color:#000;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/09/TikTok_logo.svg" alt="TikTok" style="width:24px; height:24px;">
-  <span>@smokeyjae13</span>
-</a>
-      padding: 1rem;
-      font-family: 'UnifrakturCook', cursive;
-      font-size: 2rem;
-    }
-    nav {
-      position: relative;
-    }
-    .dropdown {
-      background: #003f4f;
-      padding: 0.5rem;
-      border-radius: 5px;
-      cursor: pointer;
-      display: inline-block;
-      margin: 1rem;
-    }
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #006d77;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      z-index: 1;
-      width: 100px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .dropdown-content a {
-      color: white;
-      padding: 10px;
-      display: block;
-      text-decoration: none;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    .spores {
-      animation: float 4s infinite ease-in-out;
-      font-size: 2rem;
-    }
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-10px); }
-      100% { transform: translateY(0px); }
-    }
-    .shop-item {
-      margin: 1rem auto;
-      background: #004b5b;
-      padding: 1rem;
-      max-width: 400px;
-      border-radius: 10px;
-    }
-    .shop-item button {
-      margin-top: 0.5rem;
-      background: #0a9396;
-      color: #fff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    form input, form textarea {
-      padding: 0.5rem;
-      margin: 0.5rem 0;
-      width: 90%;
-      border-radius: 5px;
-      border: none;
-    }
-    form button {
-      background: #0a9396;
-      color: #fff;
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-    }
-    footer {
-      margin-top: 3rem;
-      padding: 1rem;
-      background: #003d4d;
-      font-size: 0.9rem;
-    }
-    #cart {
-      margin: 2rem auto;
-      max-width: 500px;
-      background: #002e3a;
-      padding: 1rem;
-      border-radius: 10px;
-    }
+header h1 {
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #70d6ff;
+}
+
+nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #70d6ff;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  background-image: url('hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-top: 1.5rem;
+  color: #ffffff;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+  color: #c0e8f9;
+}
+
+.shop-section {
+  padding: 3rem 2rem;
+  background: #14213d;
+}
+
+.product {
+  background: #1f2d5a;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem;
+  display: inline-block;
+  width: calc(33% - 2rem);
+  vertical-align: top;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.product img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.product h3 {
+  color: #70d6ff;
+  margin-top: 0.5rem;
+}
+
+.product p {
+  color: #cce7ff;
+}
+
+footer {
+  padding: 2rem;
+  text-align: center;
+  background: #0e1a34;
+  color: #aaa;
+}
+
+.promo-code, .cart, .contact {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #25365c;
+  border-radius: 10px;
+}
+
+.promo-code input, .contact input, .contact textarea {
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  width: 100%;
+  border-radius: 6px;
+  border: none;
+}
+
+.btn {
+  background-color: #70d6ff;
+  border: none;
+  color: #14213d;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #56c2e8;
+}
+
+@media (max-width: 768px) {
+  .product {
+    width: calc(100% - 2rem);
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+}
+
   </style>
-</head>
-<body>
-
-<header>Blue Mushroom</header>
-
-<nav>
-  <div class="dropdown">
-    Menu
-    <div class="dropdown-content">
+</head><body>
+  <header>
+    <h1>The Blue Mushroom Supplies</h1>
+    <nav>
       <a href="#shop">Shop</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
+    </nav>
+  </header>  <section class="hero">
+    <img src="minismokey.png" alt="Mini Smokey on Lowrider">
+    <h2>Low and Slow, the Mycelium Way</h2>
+    <p>Peace, Love, and Hippie Shit</p>
+  </section>  <section id="shop" class="shop-section">
+    <div class="product">
+      <img src="product1.jpg" alt="Product 1">
+      <h3>Spore Print Pack</h3>
+      <p>$25.00</p>
+      <button class="btn">Add to Cart</button>
     </div>
-  </div>
-</nav>
+    <div class="product">
+      <img src="product2.jpg" alt="Product 2">
+      <h3>Grow Kit Bundle</h3>
+      <p>$45.00</p>
+      <button class="btn">Add to Cart</button>
+    </div>
+    <div class="product">
+      <img src="product3.jpg" alt="Product 3">
+      <h3>Blue Mushroom Tee</h3>
+      <p>$20.00</p>
+      <button class="btn">Add to Cart</button>
+    </div>
+  </section>  <section class="promo-code">
+    <h3>Got a Promo Code?</h3>
+    <input type="text" id="promoInput" placeholder="Enter code e.g. smokey10 or HIPPESHIT">
+    <button class="btn" onclick="applyPromo()">Apply</button>
+    <p id="promoFeedback"></p>
+  </section>  <section class="contact" id="contact">
+    <h3>Contact Us</h3>
+    <form action="https://formspree.io/f/xzzrdaev" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="4" placeholder="Your Message"></textarea>
+      <button class="btn" type="submit">Send</button>
+    </form>
+  </section>  <footer>
+    <p>Follow us on TikTok: <a href="https://www.tiktok.com/@smokeyjae13" target="_blank">@smokeyjae13</a></p>
+    <p>&copy; 2025 The Blue Mushroom Supplies. All rights firme.</p>
+  </footer>  <script>
+    function applyPromo() {
+      const input = document.getElementById('promoInput').value.trim().toUpperCase();
+      const feedback = document.getElementById('promoFeedback');
 
-<section>
-  <h1>The Blue Mushroom Supplies</h1>
-  <p><em>"Low and Slow, the Mycelium Way"</em></p>
-
-  <div class="spores">** Mini Smokey on a lowrider bike **</div>
-
-  <p><strong>Peace, Love, and Hippie Shit</strong></p>
-</section>
-
-<section id="shop">
-  <h2>Shop</h2>
-
-  <div class="shop-item">
-    Syringe of live culture - $10
-    <button onclick="addToCart('Syringe', 10)">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    Substrate Kit - $15
-    <button onclick="addToCart('Substrate Kit', 15)">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    Grain bag - $20
-    <button onclick="addToCart('Grain bag', 20)">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    Inoculated Grain bag - $25
-    <button onclick="addToCart('Inoculated Grain bag', 25)">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    All-in-one - $30
-    <button onclick="addToCart('All-in-one', 30)">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    Inoculated All-in-one - $35
-    <button onclick="addToCart('Inoculated All-in-one', 35)">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    Premade lids - $2 or 3 for $5
-    <button onclick="addToCart('Premade lids', 5)">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    Clean Agar cup - $1
-    <button onclick="addToCart('Clean Agar cup', 1)">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    Clean Agar plate - $2
-    <button onclick="addToCart('Clean Agar plate', 2)">Add to Cart</button>
-  </div>
-  <div class="shop-item">
-    Inoculated Cup/Plate - $15
-    <button onclick="addToCart('Inoculated Cup/Plate', 15)">Add to Cart</button>
-  </div>
-<!-- Floating Cart Icon -->
-<div id="cart-icon" onclick="toggleCart()">
-  🛒
-  <span id="cart-count">0</span>
-</div>
-
-<!-- Slide-Out Cart Panel -->
-<div id="cart-panel">
-  <h2>Your Cart</h2>
-  <div id="cart-items"></div>
-  
-  <div class="promo-code">
-    <label for="promo">Promo Code:</label>
-    <input type="text" id="promo" placeholder="Enter code">
-  </div>
-
-  <div class="cart-actions">
-    <button onclick="applyPromo()">Apply</button>
-    <button onclick="checkout()">Checkout</button>
-  </div>
-</div>
-  <div id="cart">
-    <h3>Cart</h3>
-    <div id="cart-items"></div>
-    <p><strong>Total: $<span id="total">0</span></strong></p>
-  </div>
-</section>
-
-<section id="about">
-  <h2>About</h2>
-  <section id="about" style="padding: 3rem 1rem; background: linear-gradient(135deg, #dbeafe, #e0f2fe); color: #1e293b; font-family: 'Trebuchet MS', sans-serif; text-align: center;">
-  <h2 style="font-size: 3rem; margin-bottom: 1.5rem; text-transform: uppercase; letter-spacing: 2px; color: #0284c7; text-shadow: 1px 1px 2px #94a3b8;">About Us</h2>
-
-  <img src="images/about-photo.jpg" alt="The Blue Mushroom Supply booth" style="max-width: 100%; max-height: 500px; object-fit: cover; border-radius: 2rem; box-shadow: 0 12px 32px rgba(0,0,0,0.3); margin-bottom: 2rem;" />
-
-  <p style="font-size: 1.2rem; line-height: 2; max-width: 800px; margin: 0 auto 1.5rem auto;">
-    We’re a small-town, family-owned and operated biz — local roots, clean vibes. Everything we offer is lab-tested and crafted with care, straight from our heart to your hands.
-  </p>
-
-  <p style="font-size: 1.2rem; line-height: 2; max-width: 800px; margin: 0 auto 1.5rem auto;">
-    Mushrooms didn’t just change my life — they helped me overcome alcohol addiction and get on the path to recovery. If you're struggling, just know: <strong style="color: #0ea5e9;">we do recover</strong>. And if you're ever in need — we got you.
-  </p>
-
-  <p style="font-size: 1.2rem; line-height: 2; max-width: 800px; margin: 0 auto;">
-    Have questions or a problem with your order? Hit us up. We'll always make it right. It’s more than business — it’s family.
-  </p>
-
-  <p style="font-size: 1.5rem; font-weight: bold; color: #3b82f6; margin-top: 2rem; font-style: italic;">
-    Peace, Love, and Hippie Shit.
-  </p>
-  </section>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <form action="https://formspree.io/f/xzzrdaev" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required><br>
-    <input type="email" name="_replyto" placeholder="Your Email" required><br>
-    <textarea name="message" placeholder="Your message here..." rows="4" required></textarea><br>
-    <button type="submit">Send</button>
-  </form>
-</section>
-
-<footer>
-  © 2025 The Blue Mushroom Supplies. All rights reserved.
-</footer>
-
-<script>
-  let total = 0;
-  const cartItems = [];
-
-  function addToCart(item, price) {
-    cartItems.push({ item, price });
-    total += price;
-    updateCart();
-  }
-
-  function updateCart() {
-    const cartDiv = document.getElementById('cart-items');
-    cartDiv.innerHTML = '';
-    cartItems.forEach(entry => {
-      const div = document.createElement('div');
-      div.textContent = `${entry.item} - $${entry.price}`;
-      cartDiv.appendChild(div);
-    });
-    document.getElementById('total').textContent = total;
-  }
-</script>
-
-</body>
-</html>
+      if (input === 'SMOKEY10') {
+        feedback.textContent = 'Promo applied: 10% off!';
+      } else if (input === 'HIPPESHIT') {
+        feedback.textContent = 'Promo applied: 20% off (first time)!';
+      } else {
+        feedback.textContent = 'Invalid code. Try again, ese.';
+      }
+    }
+  </script></body></html>
