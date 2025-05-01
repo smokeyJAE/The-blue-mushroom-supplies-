@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="The Blue Mushroom Supplies - Low and Slow, the Mycelium Way" />
-  <meta name="keywords" content="mushroom supplies, psychedelic gear, lowrider, cholo style" />
+  <meta name="keywords" content="mushroom supplies, psychedelic gear, lowrider, cholo style, liquid culture" />
   <meta name="author" content="Mini Smokey" />
   <title>The Blue Mushroom Supplies</title>
   <style>
@@ -65,12 +66,8 @@
       margin: 20px 0;
     }
 
-    footer {
-      background-color: #001f33;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
+    .shop, .cart {
+      margin-top: 30px;
     }
 
     .item, .cart-item {
@@ -94,6 +91,14 @@
 
     button:hover {
       background: #3a9ba7;
+    }
+
+    footer {
+      background-color: #001f33;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
     }
 
     @media (max-width: 600px) {
@@ -132,13 +137,16 @@
 
     <section id="about">
       <h2>About Us</h2>
-      <p>At The Blue Mushroom, we’re your firme one-stop shop for quality mycology supplies. Whether you’re into grow kits, agar, grains, or just looking to roll low and cultivate high, we got you. Our vibes are psychedelic, our service is personal, and our style is all Smokey.</p>
+      <p>The Blue Mushroom Supplies is a firme underground movement pushing clean and reliable mushroom culture supplies for the people — by the people. From grain bags to elite genetics, we got you covered like a serape blanket. If you know, you grow.</p>
     </section>
 
-    <section id="shop">
+    <section id="shop" class="shop">
       <h2>Shop</h2>
       <div id="items"></div>
-      <h3>Shopping Cart</h3>
+    </section>
+
+    <section class="cart">
+      <h2>Shopping Cart</h2>
       <div id="cart"></div>
       <p><strong>Total:</strong> $<span id="total">0</span></p>
     </section>
@@ -146,9 +154,18 @@
     <section id="contact">
       <h2>Contact Us</h2>
       <form action="https://formspree.io/f/xzzrdaev" method="POST">
-        <label>Name:<br /> <input type="text" name="name" required></label><br><br>
-        <label>Email:<br /> <input type="email" name="_replyto" required></label><br><br>
-        <label>Message:<br /> <textarea name="message" rows="4" required></textarea></label><br><br>
+        <label>
+          Name:<br />
+          <input type="text" name="name" required>
+        </label><br><br>
+        <label>
+          Email:<br />
+          <input type="email" name="_replyto" required>
+        </label><br><br>
+        <label>
+          Message:<br />
+          <textarea name="message" rows="4" required></textarea>
+        </label><br><br>
         <button type="submit">Send</button>
       </form>
     </section>
@@ -160,10 +177,7 @@
 
   <script>
     const products = [
-      { name: 'Syringe of live culture - Golden Teacher', price: 10 },
-      { name: 'Syringe of live culture - B+ Strain', price: 10 },
-      { name: 'Syringe of live culture - Penis Envy', price: 12 },
-      { name: 'Syringe of live culture - Albino A+', price: 11 },
+      { name: 'Syringe of live culture', price: 10 },
       { name: 'Substrate Kit', price: 15 },
       { name: 'Grain bag', price: 20 },
       { name: 'Inoculated Grain bag', price: 25 },
@@ -172,10 +186,25 @@
       { name: 'Premade lids', price: 2 },
       { name: 'Clean Agar cup', price: 1 },
       { name: 'Clean Agar plate', price: 2 },
-      { name: 'Inoculated Cup/Plate', price: 15 }
+
+      // Clean Liquid Cultures
+      { name: 'Gorilla Wizard Culture', price: 10 },
+      { name: 'Roger Rabbit Culture', price: 10 },
+      { name: 'Albino Penis Envy Culture', price: 12 },
+      { name: 'Inca Stargazer Culture', price: 10 },
+      { name: 'Snape Culture', price: 10 },
+      { name: 'Goliath Penis Envy Culture', price: 12 },
+      { name: 'Linguistic Swamp Ghost Culture', price: 10 },
+      { name: 'Burma Culture', price: 10 },
+      { name: 'Jack Frost Culture', price: 10 },
+      { name: 'Casper Culture', price: 10 },
+      { name: 'Jalisco Culture', price: 10 },
+      { name: 'Pakalensis Culture', price: 10 },
+      { name: 'Melmac OG Culture', price: 12 }
     ];
 
     const cart = [];
+
     const itemsDiv = document.getElementById('items');
     const cartDiv = document.getElementById('cart');
     const totalSpan = document.getElementById('total');
@@ -228,4 +257,3 @@
   </script>
 </body>
 </html>
-
