@@ -1,21 +1,23 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="The Blue Mushroom Supplies - Low and Slow, the Mycelium Way" />
-  <meta name="keywords" content="mushroom supplies, psychedelic gear, lowrider, cholo style, liquid culture" />
+  <meta name="keywords" content="mushroom supplies, psychedelic gear, lowrider, cholo style" />
   <meta name="author" content="Mini Smokey" />
   <title>The Blue Mushroom Supplies</title>
   <style>
     body {
-      margin: 0;
+      background: #0d1b2a;
+      color: #fefefe;
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(180deg, #003366, #336699);
-      color: #fff;
+      padding: 20px;
     }
-
+    h1 {
+      text-align: center;
+      color: #4cb8c4;
+    }
     header {
       background-color: rgba(0, 0, 0, 0.7);
       padding: 10px 20px;
@@ -26,50 +28,21 @@
       top: 0;
       z-index: 1000;
     }
-
     header h1 {
       font-family: 'Impact', sans-serif;
       font-size: 1.5rem;
       color: #00ccff;
     }
-
     nav a {
       color: white;
       text-decoration: none;
       margin-left: 15px;
       font-weight: bold;
     }
-
     nav a:hover {
       text-decoration: underline;
       color: #66ccff;
     }
-
-    .container {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .mascot {
-      text-align: center;
-    }
-
-    .mascot img {
-      max-width: 300px;
-      width: 100%;
-    }
-
-    .catchphrases {
-      font-style: italic;
-      text-align: center;
-      margin: 20px 0;
-    }
-
-    .shop, .cart {
-      margin-top: 30px;
-    }
-
     .item, .cart-item {
       background: #1b263b;
       margin-bottom: 10px;
@@ -79,7 +52,6 @@
       justify-content: space-between;
       align-items: center;
     }
-
     button {
       padding: 5px 10px;
       background: #4cb8c4;
@@ -88,29 +60,15 @@
       border-radius: 5px;
       cursor: pointer;
     }
-
     button:hover {
       background: #3a9ba7;
     }
-
     footer {
       background-color: #001f33;
       color: #fff;
       text-align: center;
       padding: 20px;
       font-size: 0.9rem;
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      nav a {
-        margin: 5px 0;
-      }
     }
   </style>
 </head>
@@ -125,56 +83,41 @@
     </nav>
   </header>
 
-  <div class="container">
-    <div class="mascot">
-      <img src="images/mini-smokey.png" alt="Mini Smokey posing firme on his lowrider" />
-    </div>
+  <h1>Blue Mushroom Supplies</h1>
 
-    <div class="catchphrases">
-      <p>“Low and Slow, the Mycelium Way”</p>
-      <p>“Peace, Love, and Hippie Shit”</p>
-    </div>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>We provide firme mycology supplies and clean cultures for the psychedelic community — straight from the barrio to your grow. Quality spores, clean liquid culture, and vibes curated by Mini Smokey. Ride low, grow high.</p>
+  </section>
 
-    <section id="about">
-      <h2>About Us</h2>
-      <p>The Blue Mushroom Supplies is a firme underground movement pushing clean and reliable mushroom culture supplies for the people — by the people. From grain bags to elite genetics, we got you covered like a serape blanket. If you know, you grow.</p>
-    </section>
+  <section class="shop" id="shop">
+    <h2>Shop</h2>
+    <div id="items"></div>
+  </section>
 
-    <section id="shop" class="shop">
-      <h2>Shop</h2>
-      <div id="items"></div>
-    </section>
+  <section class="cart">
+    <h2>Shopping Cart</h2>
+    <div id="cart"></div>
+    <p><strong>Total:</strong> $<span id="total">0</span></p>
+  </section>
 
-    <section class="cart">
-      <h2>Shopping Cart</h2>
-      <div id="cart"></div>
-      <p><strong>Total:</strong> $<span id="total">0</span></p>
-    </section>
+  <div id="paypal-button-container" style="margin-top: 30px;"></div>
 
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <form action="https://formspree.io/f/xzzrdaev" method="POST">
-        <label>
-          Name:<br />
-          <input type="text" name="name" required>
-        </label><br><br>
-        <label>
-          Email:<br />
-          <input type="email" name="_replyto" required>
-        </label><br><br>
-        <label>
-          Message:<br />
-          <textarea name="message" rows="4" required></textarea>
-        </label><br><br>
-        <button type="submit">Send</button>
-      </form>
-    </section>
-  </div>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form action="https://formspree.io/f/xzzrdaev" method="POST">
+      <label>Name:<br><input type="text" name="name" required></label><br><br>
+      <label>Email:<br><input type="email" name="_replyto" required></label><br><br>
+      <label>Message:<br><textarea name="message" rows="4" required></textarea></label><br><br>
+      <button type="submit">Send</button>
+    </form>
+  </section>
 
   <footer>
     &copy; 2025 The Blue Mushroom Supplies. Ride slow, grow strong.
   </footer>
 
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
   <script>
     const products = [
       { name: 'Syringe of live culture', price: 10 },
@@ -183,28 +126,25 @@
       { name: 'Inoculated Grain bag', price: 25 },
       { name: 'All-in one', price: 30 },
       { name: 'Inoculated All-in one', price: 35 },
-      { name: 'Premade lids', price: 2 },
       { name: 'Clean Agar cup', price: 1 },
       { name: 'Clean Agar plate', price: 2 },
-
-      // Clean Liquid Cultures
-      { name: 'Gorilla Wizard Culture', price: 10 },
-      { name: 'Roger Rabbit Culture', price: 10 },
-      { name: 'Albino Penis Envy Culture', price: 12 },
-      { name: 'Inca Stargazer Culture', price: 10 },
-      { name: 'Snape Culture', price: 10 },
-      { name: 'Goliath Penis Envy Culture', price: 12 },
-      { name: 'Linguistic Swamp Ghost Culture', price: 10 },
-      { name: 'Burma Culture', price: 10 },
-      { name: 'Jack Frost Culture', price: 10 },
-      { name: 'Casper Culture', price: 10 },
-      { name: 'Jalisco Culture', price: 10 },
-      { name: 'Pakalensis Culture', price: 10 },
-      { name: 'Melmac OG Culture', price: 12 }
+      // Liquid cultures
+      { name: 'Gorilla wizard LC', price: 10 },
+      { name: 'Roger Rabbit LC', price: 10 },
+      { name: 'Albino Penis Envy LC', price: 10 },
+      { name: 'Inca Stargazer LC', price: 10 },
+      { name: 'Snape LC', price: 10 },
+      { name: 'Goliath Penis Envy LC', price: 10 },
+      { name: 'Linguistic Swamp Ghost LC', price: 10 },
+      { name: 'Burma LC', price: 10 },
+      { name: 'Jack Frost LC', price: 10 },
+      { name: 'Casper LC', price: 10 },
+      { name: 'Jalisco LC', price: 10 },
+      { name: 'Pakalensis LC', price: 10 },
+      { name: 'Melmac OG LC', price: 10 }
     ];
 
     const cart = [];
-
     const itemsDiv = document.getElementById('items');
     const cartDiv = document.getElementById('cart');
     const totalSpan = document.getElementById('total');
@@ -252,8 +192,28 @@
         `;
         cartDiv.appendChild(cartItem);
       });
-      totalSpan.textContent = total;
+      totalSpan.textContent = total.toFixed(2);
     }
+
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        const total = document.getElementById('total').textContent;
+        return actions.order.create({
+          purchase_units: [{
+            amount: { value: total }
+          }]
+        });
+      },
+      onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+          alert('Gracias, ' + details.payer.name.given_name + '! Your order has been placed firme and smooth.');
+        });
+      },
+      onError: function(err) {
+        console.error(err);
+        alert('Something went wrong with the payment. Try again, ese.');
+      }
+    }).render('#paypal-button-container');
   </script>
 </body>
 </html>
