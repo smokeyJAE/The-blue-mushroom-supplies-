@@ -161,104 +161,34 @@ DOCTYPE html>
       background: #2b4c59;
       color: white;
       border: none;
-      padding: 0.5rem 1rem;
-      margin-top: 0.5rem;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-
-  <section id="shop">
-    <h2>Shop</h2>
-    <div id="items"></div>
-  </
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blue Mushroom Supplies - Shop</title>
+  <meta charset="UTF-8">
+  <title>The Blue Mushroom Supplies - Shop</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #e0f7fa;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-    h1, h2 {
-      color: #0d47a1;
-    }
     .product, .cart-item {
-      border: 1px solid #ccc;
-      padding: 10px;
       margin: 10px 0;
-      border-radius: 8px;
-      background-color: #ffffff;
     }
     .button {
-      background-color: #00796b;
-      color: white;
-      border: none;
       padding: 5px 10px;
-      cursor: pointer;
-      border-radius: 4px;
-    }
-    .button:hover {
-      background-color: #004d40;
-    }
-    #cart {
-      margin-top: 30px;
-    }
-    footer {
-      margin-top: 40px;
-      padding: 10px;
-      text-align: center;
-      background: #cfd8dc;
-      border-top: 1px solid #aaa;
-    }
-    #contact img {
-      max-width: 100%;
-      margin-top: 10px;
-      border-radius: 8px;
+      margin-left: 10px;
     }
   </style>
 </head>
 <body>
-
-  <h1>Blue Mushroom Supplies</h1>
-  <p>Low and Slow, the Mycelium Way</p>
-
+  <h1>Shop the Firme Way</h1>
   <div id="items"></div>
 
-  <section id="cart">
-    <h2>Your Cart</h2>
-    <div id="cart-items"></div>
-    <p><strong>Total (includes $5 shipping): $<span id="cart-total">0.00</span></strong></p>
-    <div id="paypal-button-container"></div>
-  </section>
+  <h2>Cart</h2>
+  <div id="cart-items"></div>
+  <p>Total: $<span id="cart-total">0.00</span></p>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Hit up E.Z. at 719-468-9162 (Rocky Ford, CO)</p>
-    <p>Or call Smokey at 719-980-2629 (La Junta, CO)</p>
-    <form action="https://formspree.io/f/xzzrdaev" method="POST">
-      <label>Name:<br><input type="text" name="name" required></label><br><br>
-      <label>Email:<br><input type="email" name="_replyto" required></label><br><br>
-      <label>Message:<br><textarea name="message" rows="4" required></textarea></label><br><br>
-      <button type="submit">Send</button>
-    </form>
-    <img src="images/contact.jpg" alt="EZ and Smokey at the Blue Mushroom booth">
-  </section>
+  <div id="paypal-button-container"></div>
 
-  <footer>
-    <p>&copy; 2025 The Blue Mushroom Supplies - All rights reserved. Ride slow, grow strong.</p>
-  </footer>
+  <!-- PayPal SDK with your actual client ID -->
+  <script src="https://www.paypal.com/sdk/js?client-id=ARSs_9qS0tyL3wPbmCQI34EF72c0rc2nq-IOtHnhc8QLtgArM_34k1g7-eM-TyU_7HNbz4uxpQjqGHBRg5jR4FE0BKvl-QB2gU7Xcw&currency=USD"></script>
 
-  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
   <script>
     const products = [
       { name: 'Syringe of live culture Smokey choice', price: 10 },
@@ -383,3 +313,17 @@ DOCTYPE html>
   </script>
 </body>
 </html>
+
+      padding: 0.5rem 1rem;
+      margin-top: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <section id="shop">
+    <h2>Shop</h2>
+    <div id="items"></div>
+  </
