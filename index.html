@@ -182,79 +182,130 @@ DOCTYPE html>
     <div id="paypal-button-container"></div>
   </section>
 
-  <script>
-    const products = [
-      { id: 1, name: "Sterile Grain Bag", price: 15 },
-      { id: 2, name: "Liquid Culture Syringe", price: 12 },
-      { id: 3, name: "Spore Swab Pack", price: 10 }
-    ];
+  
+<script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
 
-    const cart = [];
+<script>
+  const products = [
+    { name: 'Syringe of live culture', price: 10 },
+    { name: 'Substrate Kit', price: 15 },
+    { name: 'Grain bag', price: 20 },
+    { name: 'Inoculated Grain bag', price: 25 },
+    { name: 'All-in one', price: 30 },
+    { name: 'Inoculated All-in one', price: 35 },
+    { name: 'Clean Agar cup', price: 1 },
+    { name: 'Clean Agar plate', price: 2 },
+    { name: 'Gorilla wizard LC', price: 10 },
+    { name: 'Roger Rabbit LC', price: 10 },
+    { name: 'Albino Penis Envy LC', price: 10 },
+    { name: 'Inca Stargazer LC', price: 10 },
+    { name: 'Snape LC', price: 10 },
+    { name: 'Goliath Penis Envy LC', price: 10 },
+    { name: 'Linguistic Swamp Ghost LC', price: 10 },
+    { name: 'Burma LC', price: 10 },
+    { name: 'Jack Frost LC', price: 10 },
+    { name: 'Casper LC', price: 10 },
+    { name: 'Jalisco LC', price: 10 },
+    { name: 'Pakalensis LC', price: 10 },
+    { name: 'Melmac OG LC', price: 10 }
+  ];
 
-    function renderItems() {
-      const container = document.getElementById("items");
-      products.forEach(product => {
-        const div = document.createElement("div");
-        div.innerHTML = `
-          <p><strong>${product.name}</strong> - $${product.price}</p>
-          <button onclick="addToCart(${product.id})">Add to Cart</button>
-        `;
-        container.appendChild(div);
-      });
+  let cart = [];
+
+  const itemsDiv = document.getElementById('items');
+  const cartItems = document.getElementById('cart-items');
+  const cartTotal = document.getElementById('cart-total');
+
+  // Display products
+  products.forEach((product, index) => {
+    const item = document.createElement('div');
+    item.className = 'item';
+    item.innerHTML = `
+      <span>${product.name} - $${product.price}</span>
+      <button onclick="addToCart(${index})">Add to Cart</button>
+    `;
+    itemsDiv.appendChild(item);
+  });
+
+  function addToCart(index) {
+    const product = products[index];
+    const existing = cart.find(item => item.name === product.name);
+    if (existing) {
+      existing.quantity++;
+    } else {
+      cart.push({ ...product, quantity: 1 });
+    }
+    updateCartDisplay();
+  }
+
+  function removeFromCart(index) {
+    if (cart[index].quantity > 1) {
+      cart[index].quantity--;
+    } else {
+      cart.splice(index, 1);
+    }
+    updateCartDisplay();
+  }
+
+  function updateCartDisplay() {
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      const div = document.createElement('div');
+      div.className = 'cart-item';
+      div.innerHTML = `
+        <span>${item.name} x${item.quantity} - $${itemTotal.toFixed(2)}</span>
+        <button onclick="removeFromCart(${index})">Remove</button>
+      `;
+      cartItems.appendChild(div);
+    });
+
+    // Add shipping
+    const shipping = cart.length > 0 ? 5 : 0;
+    if (shipping > 0) {
+      const shippingDiv = document.createElement('div');
+      shippingDiv.innerHTML = `<em>Shipping & handling: $${shipping.toFixed(2)}</em>`;
+      cartItems.appendChild(shippingDiv);
     }
 
-    function addToCart(productId) {
-      const item = cart.find(i => i.id === productId);
-      if (item) {
-        item.quantity += 1;
-      } else {
-        const product = products.find(p => p.id === productId);
-        cart.push({ ...product, quantity: 1 });
-      }
-      renderCart();
+    total += shipping;
+    cartTotal.textContent = total.toFixed(2);
+    renderPayPalButton(total);
+  }
+
+  function renderPayPalButton(total) {
+    const container = document.getElementById('paypal-button-container');
+    container.innerHTML = '';
+
+    if (total > 0) {
+      paypal.Buttons({
+        createOrder: (data, actions) => {
+          return actions.order.create({
+            purchase_units: [{
+              amount: {
+                value: total.toFixed(2)
+              }
+            }]
+          });
+        },
+        onApprove: (data, actions) => {
+          return actions.order.capture().then((details) => {
+            alert(`Gracias, ${details.payer.name.given_name}! Your order is firme and smooth.`);
+            cart = [];
+            updateCartDisplay();
+          });
+        },
+        onError: (err) => {
+          console.error(err);
+          alert('Something went wrong, try again, ese.');
+        }
+      }).render(container);
     }
-
-    function renderCart() {
-      const cartDiv = document.getElementById("cart-items");
-      const totalSpan = document.getElementById("cart-total");
-      cartDiv.innerHTML = "";
-      let total = 0;
-      cart.forEach(item => {
-        const itemTotal = item.price * item.quantity;
-        total += itemTotal;
-        cartDiv.innerHTML += `<p>${item.name} x${item.quantity} - $${itemTotal}</p>`;
-      });
-      const shipping = cart.length ? 5 : 0;
-      if (cart.length > 0) {
-        cartDiv.innerHTML += `<p><em>Shipping & handling: $${shipping}</em></p>`;
-      }
-      total += shipping;
-      totalSpan.innerText = total.toFixed(2);
-    }
-
-    renderItems();
-  </script>
-
-  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
-  <script>
-    paypal.Buttons({
-      createOrder: function(data, actions) {
-        const total = parseFloat(document.getElementById("cart-total").innerText);
-        return actions.order.create({
-          purchase_units: [{
-            amount: {
-              value: total.toFixed(2)
-            }
-          }]
-        });
-      },
-      onApprove: function(data, actions) {
-        return actions.order.capture().then(function(details) {
-          alert('Transaction completed by ' + details.payer.name.given_name + '!');
-        });
-      }
-    }).render('#paypal-button-container');
-  </script>
+  }
+</script>
 
 </body>
 </html>
