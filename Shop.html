@@ -1,7 +1,8 @@
-html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Blue Mushroom Supplies - Shop</title>
   <style>
     body {
@@ -9,6 +10,16 @@ html>
       background-color: #0d1b2a;
       color: #fefefe;
       padding: 20px;
+    }
+    header nav {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    nav a {
+      color: #00ccff;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
     }
     h1, h2 {
       color: #00ccff;
@@ -44,17 +55,25 @@ html>
 </head>
 <body>
 
-  <h1>Shop the Firme Way</h1>
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="Shop.html">Shop</a>
+    </nav>
+  </header>
 
-  <div id="items"></div>
+  <main>
+    <h1>Shop the Firme Way</h1>
 
-  <h2>Cart</h2>
-  <div id="cart-items"></div>
-  <p style="text-align: center;">Total: $<span id="cart-total">0.00</span></p>
+    <div id="items"></div>
 
-  <div id="paypal-button-container"></div>
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <p style="text-align: center;">Total: $<span id="cart-total">0.00</span></p>
 
-  <!-- Replace this with your actual PayPal client ID -->
+    <div id="paypal-button-container"></div>
+  </main>
+
   <script src="https://www.paypal.com/sdk/js?client-id=ARSs_9qS0tyL3wPbmCQI34EF72c0rc2nq-IOtHnhc8QLtgArM_34k1g7-eM-TyU_7HNbz4uxpQjqGHBRg5jR4FE0BKvl-QB2gU7Xcw&currency=USD"></script>
 
   <script>
@@ -136,7 +155,6 @@ html>
         cartItems.appendChild(line);
       });
 
-      // Add shipping if cart is not empty
       const shipping = cart.length > 0 ? 5 : 0;
       if (shipping > 0) {
         const shippingLine = document.createElement('div');
@@ -183,4 +201,4 @@ html>
     updateCart();
   </script>
 </body>
-</html>
+</html
