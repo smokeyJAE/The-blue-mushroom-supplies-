@@ -86,6 +86,182 @@
     <img src="images/home.jpg" alt="Mini Smokey on his lowrider surrounded by mushrooms" />
   </section>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Blue Mushroom Supplies - Shop</title>
+  <style>
+    body {
+      font-family: 'Trebuchet MS', sans-serif;
+      margin: 2rem;
+      background-color: #f0f7f9;
+      color: #2b4c59;
+    }
+    .product, .cart-item {
+      background: #e2f0f2;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+    }
+    button {
+      background: #2b4c59;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1c333f;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      background: #0d1b2a;
+      color: #66ccff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Shop the Firme Way</h1>
+  <div id="items"></div>
+
+  <h2>Cart</h2>
+  <div id="cart-items"></div>
+  <p>Total: $<span id="cart-total">0.00</span></p>
+
+  <div id="paypal-button-container"></div>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=ARSs_9qS0tyL3wPbmCQI34EF72c0rc2nq-IOtHnhc8QLtgArM_34k1g7-eM-TyU_7HNbz4uxpQjqGHBRg5jR4FE0BKvl-QB2gU7Xcw&currency=USD"></script>
+  <script>
+    const products = [
+      { name: 'Syringe of live culture Smokey choice', price: 10 },
+      { name: 'Substrate Kit', price: 15 },
+      { name: 'Grain bag', price: 20 },
+      { name: 'Inoculated Grain bag', price: 25 },
+      { name: 'All-in one', price: 30 },
+      { name: 'Inoculated All-in one', price: 35 },
+      { name: 'Clean Agar cup', price: 5 },
+      { name: 'Clean Agar plate', price: 5.50 },
+      { name: 'Gorilla wizard LC', price: 10 },
+      { name: 'Roger Rabbit LC', price: 10 },
+      { name: 'Albino Penis Envy LC', price: 10 },
+      { name: 'Inca Stargazer LC', price: 10 },
+      { name: 'Snape LC', price: 10 },
+      { name: 'Goliath Penis Envy LC', price: 10 },
+      { name: 'Linguistic Swamp Ghost LC', price: 10 },
+      { name: 'Burma LC', price: 10 },
+      { name: 'Jack Frost LC', price: 10 },
+      { name: 'Casper LC', price: 10 },
+      { name: 'Jalisco LC', price: 10 },
+      { name: 'Pakalensis LC', price: 10 },
+      { name: 'Melmac OG LC', price: 10 }
+    ];
+
+    let cart = [];
+
+    const itemsDiv = document.getElementById('items');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+
+    products.forEach((product, index) => {
+      const item = document.createElement('div');
+      item.className = 'product';
+      item.innerHTML = `
+        <h3>${product.name}</h3>
+        <p>Price: $${product.price.toFixed(2)}</p>
+        <button onclick="addToCart(${index})">Add to Cart</button>
+      `;
+      itemsDiv.appendChild(item);
+    });
+
+    function addToCart(index) {
+      const product = products[index];
+      const existing = cart.find(item => item.name === product.name);
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+      updateCartDisplay();
+    }
+
+    function removeFromCart(index) {
+      if (cart[index].quantity > 1) {
+        cart[index].quantity--;
+      } else {
+        cart.splice(index, 1);
+      }
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      cartItems.innerHTML = '';
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <p>${item.name} x${item.quantity} - $${itemTotal.toFixed(2)}</p>
+          <button onclick="removeFromCart(${index})">Remove</button>
+        `;
+        cartItems.appendChild(div);
+      });
+
+      const shipping = cart.length > 0 ? 5 : 0;
+      if (shipping > 0) {
+        const shippingDiv = document.createElement('div');
+        shippingDiv.innerHTML = `<em>Shipping & handling: $${shipping.toFixed(2)}</em>`;
+        cartItems.appendChild(shippingDiv);
+      }
+
+      total += shipping;
+      cartTotal.textContent = total.toFixed(2);
+      renderPayPalButton(total);
+    }
+
+    function renderPayPalButton(total) {
+      const container = document.getElementById('paypal-button-container');
+      container.innerHTML = '';
+
+      if (total > 0) {
+        paypal.Buttons({
+          createOrder: function(data, actions) {
+            return actions.order.create({
+              purchase_units: [{
+                amount: {
+                  value: total.toFixed(2)
+                }
+              }]
+            });
+          },
+          onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+              alert(`Gracias, ${details.payer.name.given_name}! Your order is firme and smooth.`);
+              cart = [];
+              updateCartDisplay();
+            });
+          },
+          onError: function(err) {
+            console.error(err);
+            alert('Something went wrong, try again, ese.');
+          }
+        }).render(container);
+      }
+    }
+  </script>
+
+  <footer>
+    <p>“Low and Slow, the Mycelium Way” | “Peace, Love, and Hippie Shit”</p>
+    <p>&copy; 2025 The Blue Mushroom Supplies</p>
+  </footer>
+</body>
+</html>
   <section id="about">
     <h2>About Us</h2>
     <p>We provide firme mycology supplies and clean cultures for the psychedelic community — straight from the barrio to your grow. Quality spores, clean liquid culture, and vibes.</p>
