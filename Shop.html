@@ -108,6 +108,18 @@
       }
       updateCartDisplay();
     }
+<button onclick="goToCheckout()" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded mt-4">Proceed to Checkout</button>
+
+<script>
+  // ... your existing Shop.html JavaScript ...
+
+  function goToCheckout() {
+    const cartString = JSON.stringify(cart);
+    window.location.href = `checkout.html?cart=${encodeURIComponent(cartString)}`;
+  }
+
+  // ... rest of your Shop.html JavaScript ...
+</script>
 
     function updateCartDisplay() {
       cartItems.innerHTML = '';
